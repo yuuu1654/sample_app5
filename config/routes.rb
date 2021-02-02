@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
-  get 'static_pages/home'
-  # => StaticPages#home
   
-  get 'static_pages/help'
+  root 'static_pages#home'
+  
+  get '/help', to: 'static_pages#help'
   # => StaticPages#help
   
-  get 'static_pages/about'
-  root 'static_pages#home'
+  get '/about', to: 'static_pages#about'
+  
+  get '/contact', to: 'static_pages#contact'
+  # => contact_path '/contact'
+  # => contact_url  'ドメイン名/contact'
+
+  get '/signup', to: 'users#new'
+  
 end
+

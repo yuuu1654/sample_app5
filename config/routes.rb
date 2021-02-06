@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # => contact_url  'ドメイン名/contact'
 
   get '/signup', to: 'users#new'
+  resources :users
   
 end
 

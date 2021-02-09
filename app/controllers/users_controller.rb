@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     if @user.save
       # Success(valid params)
       # GET "/users/#{@user.id}"
+      log_in @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
       # redirect_to user_path(@user)

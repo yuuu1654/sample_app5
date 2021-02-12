@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password]) #nilガード
       # ユーザーログイン後にユーザー情報ページにリダイレクトされる
       log_in user
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to user
     else
       # alert-danger => 赤色のフラッシュ
@@ -25,7 +26,7 @@ class SessionsController < ApplicationController
   
   # DELETE /logout
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to root_url
   end
   

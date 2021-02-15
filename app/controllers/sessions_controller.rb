@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       # ユーザーログイン後にユーザー情報ページにリダイレクトされる
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to user
+      redirect_back_or user
     else
       # alert-danger => 赤色のフラッシュ
       flash.now[:danger] = 'Invalid email/password combination' 

@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     # user = User.first (ローカル変数)
     @user = User.find(params[:id]) #(インスタンス変数)
     # @@user = User.first (グローバル変数：ほとんど使わない)
-    
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
   
   # GET /users/new
@@ -78,14 +78,7 @@ class UsersController < ApplicationController
     
     #beforeアクション
     
-    #ログイン済みユーザーかどうか確認
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
+    
     
     # 正しいユーザーかどうか確認
     def correct_user

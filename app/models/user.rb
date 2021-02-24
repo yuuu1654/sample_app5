@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
   # => User.first
   # => User.all
   attr_accessor :remember_token, :activation_token, :reset_token
@@ -80,6 +81,11 @@ class User < ApplicationRecord
   #〜より早い時刻と訳す
   def password_reset_expired?
     self.reset_sent_at < 2.hours.ago
+  end
+  
+  #試作フィードの定義
+  def feed
+    Micropost.where("user_id = ?", self.id)
   end
   
   private

@@ -136,5 +136,6 @@ class User < ApplicationRecord
     end
 
     #ユーザーモデルを編集しました
+    #ユーザーモデルを追加で編集しました
   
 end

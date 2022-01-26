@@ -135,7 +135,6 @@ class User < ApplicationRecord
       self.activation_digest = User.digest(activation_token)
     end
 
-    #ユーザーモデルを編集しました
-    #ユーザーモデルを追加で編集しました
+    #ユーザーモデルを変更しました
   
 end
